@@ -13,7 +13,6 @@ import java.lang.reflect.ParameterizedType
 abstract class BaseActivity<VM : BaseViewModel, VDB : ViewDataBinding> : AppCompatActivity() {
     lateinit var binding: VDB
     lateinit var viewModel: VM
-//    private lateinit var googleFitTools: GoogleFitTools
 
     abstract fun getContentViewId(): Int
 
@@ -45,48 +44,4 @@ abstract class BaseActivity<VM : BaseViewModel, VDB : ViewDataBinding> : AppComp
         viewModel =
             ViewModelProvider(this).get<BaseViewModel>(modelClass as Class<BaseViewModel>) as VM
     }
-
-//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//        when {
-//            grantResults[0] == PackageManager.PERMISSION_GRANTED -> {
-//                initGoogleFit()
-//            }
-//            else -> {
-//                Timber.d("Permission ACTIVITY_RECOGNITION denied")
-//            }
-//        }
-//    }
-
-//    fun checkAndInitGoogleFit(){
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(
-//                    this,
-//                    arrayOf(Manifest.permission.ACTIVITY_RECOGNITION), 1
-//            )
-//        } else {
-//            initGoogleFit()
-//        }
-//    }
-
-//    private fun initGoogleFit() {
-//        googleFitTools = GoogleFitTools(this)
-//        googleFitTools.checkSignInForFitData(FitActionRequestCode.SUBSCRIBE)
-//        googleFitTools.checkSignInForFitData(FitActionRequestCode.READ_STEP)
-//        googleFitTools.checkSignInForFitData(FitActionRequestCode.READ_DISTANCE)
-//        lifecycle.addObserver(googleFitTools)
-//        googleFitTools.todayStepsUpdateEvent.observe(this, Observer {
-//            it.let {
-//                Timber.d("receive step data: %s", it)
-//            }
-//        })
-//        googleFitTools.todayDistanceUpdateEvent.observe(this, Observer {
-//            it.let {
-//                Timber.d("receive distance data: %s", it)
-//            }
-//        })
-//    }
-
-
 }
