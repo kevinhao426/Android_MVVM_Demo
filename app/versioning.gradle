@@ -1,0 +1,9 @@
+import java.text.SimpleDateFormat
+
+ext {
+    buildVersionCode = {
+        def df = new SimpleDateFormat("yyMMddHHmm")
+        df.setTimeZone(TimeZone.default)
+        return df.format(new Date()).toInteger()
+    }
+}
